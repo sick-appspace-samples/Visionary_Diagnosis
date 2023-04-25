@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<manifest>
+    <application name="Visionary_Diagnosis">
+        <crown name="Visionary_Diagnosis">
+            <desc>user script</desc>
+            <serves>
+                <event name="OnNewMessages">
+                    <param desc="Json formatted string with the table entries" multiplicity="1" name="jsonstring" type="string"/>
+                </event>
+                <function name="getIlluminationTemperature">
+                    <return multiplicity="1" name="value" type="float"/>
+                </function>
+                <function name="getCPUTemperature">
+                    <return multiplicity="1" name="value" type="float"/>
+                </function>
+                <function name="getMessages">
+                    <desc/>
+                    <return desc="" multiplicity="1" name="return1" type="string"/>
+                </function>
+            </serves>
+        </crown>
+        <meta key="author">AppSpace Sample</meta>
+        <meta key="version">1.0</meta>
+        <meta key="priority">low</meta>
+        <meta key="copy-protected">false</meta>
+        <meta key="read-protected">false</meta>
+        <entry default="main.lua" path="scripts"/>
+    </application>
+</manifest>

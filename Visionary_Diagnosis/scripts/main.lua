@@ -1,17 +1,17 @@
 --[[----------------------------------------------------------------------------
 
   Application Name: Visionary_Diagnosis
-    
+
   Summary:
   Shows some device information and allows to download a diagnosis dump
-  
+
   Description:
   Shows some device information and provides a button on the UI to download a
   diagnosis dump
-  
+
   How to run:
   Start by running the app (F5) or debugging (F7+F10).
-    
+
 ------------------------------------------------------------------------------]]
 --Start of Global Scope---------------------------------------------------------
 
@@ -52,7 +52,7 @@ Script.serveFunction("Visionary_Diagnosis.getIlluminationTemperature", getIllumi
 local function getCPUTemperature()
   local temperature = Monitor.Temperature.create('MAIN_CPU')
   -- Format COU Temperature to xx.xx°C
-  local cpuTempRounded = math.floor(temperature:get() * 100) / 100 
+  local cpuTempRounded = math.floor(temperature:get() * 100) / 100
   return cpuTempRounded
 end
 Script.serveFunction("Visionary_Diagnosis.getCPUTemperature", getCPUTemperature)
@@ -72,9 +72,9 @@ local function updateMessages()
     local state = SystemLog.Entry.getErrorState(logMessage)
     local level = SystemLog.Entry.getErrorLevel(logMessage)
     if errorId ~= 0 then
-        table.insert(newMessages, i, {message=message, extInfo = extInfo, 
-          timestamp = lastTime, firstOccurence=firstTime, 
-          errorId = string.format("0x%x", errorId), 
+        table.insert(newMessages, i, {message=message, extInfo = extInfo,
+          timestamp = lastTime, firstOccurence=firstTime,
+          errorId = string.format("0x%x", errorId),
           numberOccurred = numberOccurance, level=ErrorMap[level], state=StateMap[state] })
     end
   end
@@ -91,7 +91,7 @@ Timer.register(tmr, "OnExpired", handleOnExpired)
 
 Script.serveEvent("Visionary_Diagnosis.OnNewMessages", "OnNewMessages")
 
--- Function is bound to UI element and returns a json string with 
+-- Function is bound to UI element and returns a json string with
 -- all table entries
 ---@return string json string which can be parsed by DynamicTable UI element
 local function getMessages()
